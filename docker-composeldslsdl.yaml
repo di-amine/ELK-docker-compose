@@ -1,0 +1,80 @@
+# version: '3.3'
+# services:
+#     elasticsearch:
+#         image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
+#         # volumes:
+#         #     - ./data/elasticsearch/data:/usr/share/elasticsearch/data
+#         #     - ./data/elasticsearch/backups:/usr/share/elasticsearch/backups
+#         #     - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+#         ports:
+#             - 9200:9200
+#             - 9300:9300
+#         environment:
+#             # LOGSPOUT: ignore
+#             # ELASTIC_USERNAME: "elastic"
+#             # ELASTIC_PASSWORD: "MyPwd123"
+#             discovery.type: single-node
+#         expose:
+#             - 9200
+#             - 9300
+#     kibana:
+#         image: kibana:4.1.2
+#         volumes:
+#             - ./kibana.yml:/usr/share/kibana/config/kibana.yml:ro
+#             # - ./data/kibana/log:/var/log:rw
+#         ports:
+#             - 5601:5601
+#         environment:
+#             LOGSPOUT: ignore
+#         links:
+#             - elasticsearch
+#         expose:
+#             - 5601
+
+#     # busybox:
+#     #     image: busybox
+#     #     config:
+#     #         - source: myconfigfile
+#     #           target: logstash_config:/config/
+
+ 
+    
+#     Logstash:
+#         image: docker.elastic.co/logstash/logstash:7.6.1 
+#         volumes:
+#             - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+#             - ./GOOG.csv:/usr/share/logstash/pipeline/GOOG.csv
+#         links:
+#             - elasticsearch
+#         ports:
+#             - 5000:5000
+#             - 5000:5000/udp 
+#         environment:
+#             LOGSPOUT: ignore
+#         expose:
+#             - 5000  
+
+#     # Logstashstart:
+#     #     image: gliderlabs/logspout:master 
+#     #     volumes:
+#     #         - /var/run/docker.sock:/tmp/docker.sock 
+#     #     links:
+#     #         - elasticsearch
+#     #     environment:
+#     #         LOGSPOUT: ignore
+#     #         DEBUG: "true"
+#     #     # publish:
+#     #     #     - 127.0.0.1:8000:80
+#     #     logging:
+#     #         driver: syslog
+#     #         options:
+#     #             syslog-address: "udp://127.0.0.1:5000"
+
+
+            
+# # volumes:
+# #     logstash_config:
+
+# # configs:
+#     # myconfigfile:
+#     #     file: ./logstash.conf
